@@ -1,0 +1,46 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #555;
+  background: lightblue;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+}
+
+#birthday {
+  padding: 0.2rem 0.5rem;
+  margin: 0.5rem 0;
+  background: transparent;
+  border: 0;
+  font-size: 1rem;
+  border: 1px solid #555;
+  border-radius: 10px;
+  min-width: 40%;
+}
+
+.result {
+  margin: 0.5rem;
+  color: #333;
+  display: none;
+}
+
+.result h3 {
+  padding-left: 3rem;
+  color: brown;
+}
+
+.result h2:last-child {
+  padding-left: 10rem;
+}
