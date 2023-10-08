@@ -11,20 +11,34 @@ const randomGenerator = function (min, max) {
   return Number(Math.random() * (max - min) + 1 + min).toFixed(2);
 };
 
-const randomData = async function () {
+const fillChart = function (item, amount) {
+  let start = 0;
+  const interval = setInterval(() => {
+    item.querySelector(".item__shape").style.height = `${start++}%`;
+    if (start >= amount) {
+      clearInterval(interval);
+    }
+  }, 10);
+};
+
+const randomData = function () {
   let totalMonth = 0;
-  weekDays.forEach((day) => {
+  weekDays.forEach(function (day) {
     // generate random values between 0-100 to create items and their charts
     // height of each chart is dependent on its random number
-    const randomNum = Number(randomGenerator(0, 99));
+    const randomNum = Number(randomGenerator(0, 95));
     totalMonth += randomNum;
     const itemTag = `<div class="item">
-                          <div class="item__shape" style="height:${randomNum}%;">
+                          <div class="item__shape">
                               <span class="amount">${dollar}${randomNum}</span>
                           </div>
                           <div class="item__name">${day}</div>
                       </div>`;
     chart.insertAdjacentHTML("beforeend", itemTag);
+
+    const newItem = chart.lastElementChild;
+    const itemAmount = newItem.querySelector(".amount").textContent.slice(1);
+    fillChart(newItem, itemAmount);
   });
 
   //   balance is a random number between 500-1000
@@ -43,6 +57,7 @@ const randomData = async function () {
     const eachValue = Number(each.querySelector(".amount").textContent.slice(1));
     eachValue < least ? (least = eachValue) : (least = least);
     each.addEventListener("click", function (e) {
+      if (!e.target.querySelector(".amount")) return;
       const amountStyle = e.target.querySelector(".amount").style;
       e.target.querySelector(".amount").style;
       clickCount % 2 === 0 ? (amountStyle.display = "block") : (amountStyle.display = "none");
