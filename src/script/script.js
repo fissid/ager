@@ -39,8 +39,15 @@ const randomData = async function () {
   let least = 100;
   //   algorithm to find the least value
   allItems.forEach((each) => {
+    let clickCount = 0;
     const eachValue = Number(each.querySelector(".amount").textContent.slice(1));
     eachValue < least ? (least = eachValue) : (least = least);
+    each.addEventListener("click", function (e) {
+      const amountStyle = e.target.querySelector(".amount").style;
+      e.target.querySelector(".amount").style;
+      clickCount % 2 === 0 ? (amountStyle.display = "block") : (amountStyle.display = "none");
+      clickCount++;
+    });
   });
   //   after finding the least value, insert "least" class to this item's classList
   allItems.forEach((each) => {
