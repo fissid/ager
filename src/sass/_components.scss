@@ -103,6 +103,7 @@
     justify-content: center;
     margin: 0 0.2rem;
     text-align: center;
+
     &__shape {
       position: absolute;
       background: $color-soft-red;
@@ -111,14 +112,14 @@
       bottom: 20px;
       border-radius: 8px;
 
-      transform-origin: bottom;
-      transition: all 0.5s;
-
       display: flex;
       align-items: flex-start;
       justify-content: center;
 
       cursor: pointer;
+
+      //   transform-origin: bottom;
+      //   transition: all 1s ease-out;
     }
     &__name {
       color: $color-med-brown;
@@ -143,11 +144,14 @@
 
   cursor: not-allowed;
 }
-.item__shape:hover {
-  filter: brightness(120%);
-  .amount {
-    display: block;
-  }
+.item:active .item__name {
+  border: 0;
+  outline: 0;
+  text-shadow: 0 1rem 1rem transparent;
+}
+.item:active .item__shape {
+  transform: translateY(+0.1rem);
+  box-shadow: 0 0.1rem 0.3rem currentColor;
 }
 
 .footer {

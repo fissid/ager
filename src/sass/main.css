@@ -168,8 +168,6 @@ main {
   width: 11.5%;
   bottom: 20px;
   border-radius: 8px;
-  transform-origin: bottom;
-  transition: all 0.5s;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -195,11 +193,15 @@ main {
   cursor: not-allowed;
 }
 
-.item__shape:hover {
-  filter: brightness(120%);
+.item:active .item__name {
+  border: 0;
+  outline: 0;
+  text-shadow: 0 1rem 1rem transparent;
 }
-.item__shape:hover .amount {
-  display: block;
+
+.item:active .item__shape {
+  transform: translateY(0.1rem);
+  box-shadow: 0 0.1rem 0.3rem currentColor;
 }
 
 .footer {
